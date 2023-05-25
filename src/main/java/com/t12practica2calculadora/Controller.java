@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -23,17 +24,35 @@ public class Controller implements Initializable {
 
         switch(boton.getText()){
             case "=":
-                calcular();
+                if(output.getText().isEmpty() || !Character.isDigit(output.getText().charAt(output.getText().length()-1))){
+                    animacionBarra.play();
+                }else{
+                    calcular();
+                }
                 break;
             case "C":
                 output.setText("");
                 break;
             case "+", "X", "/":
-
+                if(output.getText().isEmpty() || !Character.isDigit(output.getText().charAt(output.getText().length()-1))){
+                    animacionBarra.play();
+                }else{
+                    output.setText(output.getText().concat(boton.getText()));
+                }
                 break;
             case "-":
+                if(output.getText().isEmpty() || output.getText().charAt(output.getText().length()-1) != '-'){
+                    output.setText(output.getText().concat(boton.getText()));
+                }else{
+                    animacionBarra.play();
+                }
                 break;
             case ".":
+                if(!output.getText().isEmpty() && comprobarPunto()){
+                    output.setText(output.getText().concat(boton.getText()));
+                }else{
+                    animacionBarra.play();
+                }
                 break;
             default:
                 output.setText(output.getText().concat(boton.getText()));
@@ -41,8 +60,25 @@ public class Controller implements Initializable {
         }
     }
 
+    private boolean comprobarPunto(){
+        if(Character.isDigit(output.getText().charAt(output.getText().length()-1))){
+           for(int i = output.getText().length()-2; i >= 0; i--){
+               if(!Character.isDigit(output.getText().charAt(i))){
+                   return output.getText().charAt(i) != '.';
+               }
+           }
+           return true;
+        }else{
+            return false;
+        }
+    }
+
     private void calcular(){
-        animacionBarra.play();
+        ArrayList<String> stringTrozeado = new ArrayList<>();
+
+        for(String i : output.getText().split("((?=\\+)|(?<=\\+))|((?=-)|(?<=-))|((?=X)|(?<=X))|((?=/)|(?<=/))")){
+            stringTrozeado.add(i);
+        }
     }
 
     private void prepararAgitar(){
