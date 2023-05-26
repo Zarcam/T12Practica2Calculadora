@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -78,6 +77,74 @@ public class Controller implements Initializable {
 
         for(String i : output.getText().split("((?=\\+)|(?<=\\+))|((?=-)|(?<=-))|((?=X)|(?<=X))|((?=/)|(?<=/))")){
             stringTrozeado.add(i);
+        }
+
+        for(int i = 0; i < stringTrozeado.size(); i++){
+            if(stringTrozeado.get(i).equals("-")){
+                if(i-1 < 0 || !Character.isDigit(stringTrozeado.get(i-1).charAt(0))){
+                    double aux = Double.parseDouble(stringTrozeado.get(i+1));
+                    aux *= -1;
+                    //Sustituyo el valor positivo por el negativo
+                    stringTrozeado.remove(i+1);
+                    stringTrozeado.add(i+1, Double.toString(aux));
+                    //Elimino el signo - suelto
+                    stringTrozeado.remove(i);
+                }
+            }
+        }
+
+        for(int i = 0; i < stringTrozeado.size(); i++){
+            if(stringTrozeado.get(i).equals("X") || stringTrozeado.get(i).equals("/")){
+                double termino1 = Double.parseDouble(stringTrozeado.get(i-1));
+                double termino2 = Double.parseDouble(stringTrozeado.get(i+1));
+
+                double resultadoOp;
+
+                if(stringTrozeado.get(i).equals("X")) {
+                    resultadoOp = termino1 * termino2;
+                }else{
+                    resultadoOp = termino1 / termino2;
+                }
+
+                stringTrozeado.remove(i+1);
+                stringTrozeado.remove(i);
+                stringTrozeado.remove(i-1);
+                stringTrozeado.add(i-1, Double.toString(resultadoOp));
+
+                i = 0;
+            }
+        }
+
+        for(int i = 0; i < stringTrozeado.size(); i++){
+            if(stringTrozeado.get(i).equals("+") || stringTrozeado.get(i).equals("-")){
+                double termino1 = Double.parseDouble(stringTrozeado.get(i-1));
+                double termino2 = Double.parseDouble(stringTrozeado.get(i+1));
+
+                double resultadoOp;
+
+                if(stringTrozeado.get(i).equals("+")) {
+                    resultadoOp = termino1 + termino2;
+                }else{
+                    resultadoOp = termino1 - termino2;
+                }
+
+                stringTrozeado.remove(i+1);
+                stringTrozeado.remove(i);
+                stringTrozeado.remove(i-1);
+                stringTrozeado.add(i-1, Double.toString(resultadoOp));
+
+                i = 0;
+            }
+        }
+
+        for(String i : stringTrozeado){
+            System.out.println(i);
+        }
+
+        if(stringTrozeado.size() == 1) {
+            output.setText(stringTrozeado.get(0));
+        }else{
+            System.out.println("Algo raro ha pasao");
         }
     }
 
