@@ -40,9 +40,10 @@
             <Button layoutX="10.0" layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button layoutX="155.0" layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button layoutX="300.0" layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="." GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button layoutX="300.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <Button layoutX="300.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button layoutX="10.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="+" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2" />
             <Button layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="=" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+            <Button layoutX="97.0" layoutY="287.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulsadoBoton" text="&lt;--" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

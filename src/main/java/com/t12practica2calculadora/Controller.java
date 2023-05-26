@@ -53,6 +53,13 @@ public class Controller implements Initializable {
                     animacionBarra.play();
                 }
                 break;
+            case "<--":
+                if(!output.getText().isEmpty()) {
+                    output.setText(output.getText().substring(0, output.getText().length() - 1));
+                }else{
+                    animacionBarra.play();
+                }
+                break;
             default:
                 output.setText(output.getText().concat(boton.getText()));
                 break;
