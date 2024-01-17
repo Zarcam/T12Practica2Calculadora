@@ -90,9 +90,10 @@ public class Controller implements Initializable {
             stringTrozeado.add(i);
         }
 
+        //Generar numeros negativos antes del calculo
         for(int i = 0; i < stringTrozeado.size(); i++){
             if(stringTrozeado.get(i).equals("-")){
-                if(i-1 < 0 || !Character.isDigit(stringTrozeado.get(i-1).charAt(0))){
+                if(i-1 < 0 || !Character.isDigit(stringTrozeado.get(i-1).charAt(stringTrozeado.get(i-1).length()-1))){
                     double aux = Double.parseDouble(stringTrozeado.get(i+1));
                     aux *= -1;
                     //Sustituyo el valor positivo por el negativo
@@ -104,6 +105,7 @@ public class Controller implements Initializable {
             }
         }
 
+        //Multiplicacion y division
         for(int i = 0; i < stringTrozeado.size(); i++){
             if(stringTrozeado.get(i).equals("X") || stringTrozeado.get(i).equals("/")){
                 double termino1 = Double.parseDouble(stringTrozeado.get(i-1));
@@ -126,6 +128,7 @@ public class Controller implements Initializable {
             }
         }
 
+        //Suma y resta
         for(int i = 0; i < stringTrozeado.size(); i++){
             if(stringTrozeado.get(i).equals("+") || stringTrozeado.get(i).equals("-")){
                 double termino1 = Double.parseDouble(stringTrozeado.get(i-1));
