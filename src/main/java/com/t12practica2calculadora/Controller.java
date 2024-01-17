@@ -40,7 +40,7 @@ public class Controller implements Initializable {
                 }
                 break;
             case "-":
-                if((output.getText().isEmpty() || output.getText().charAt(output.getText().length()-1) != '-') && !output.getText().equals("Infinity")){
+                if((output.getText().isEmpty() || output.getText().charAt(output.getText().length()-1) != '-') && output.getText().charAt(output.getText().length()-1) != '.' && !output.getText().equals("Infinity")){
                     output.setText(output.getText().concat(boton.getText()));
                 }else{
                     animacionBarra.play();
